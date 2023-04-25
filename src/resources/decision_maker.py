@@ -15,7 +15,7 @@ business_info = api.model(
         "SummaryOfProfitorLoss": fields.String(
             str(
                 {
-                    "bal_sheet": [
+                    "Balance Sheet": [
                         {
                             "assetsValue": 4097,
                             "month": 1,

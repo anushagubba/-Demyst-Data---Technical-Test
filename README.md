@@ -1,54 +1,73 @@
 # Demyst-Data---Technical-Test
 
+[Problem Statement](QUESTION.md)
+
 ## TechStack
 
--- Python
+- Python
 
--- JS
+- JS
 
--- React
+- React
 
--- HTML
+- HTML
 
--- CSS
+- CSS
 
--- Docker
+- Docker
 
--- Docker Compose
+- Docker Compose
+
+## Implementation Details
+
+- Frontend App is on - localhost:3000
+
+###### *Landing Page:*
+![Problem Statement](FE-landing.png)
+
+###### *Application:*
+![Problem Statement](FE.png)
+
+- Backend API is on - localhost:5000
+
+###### *Swagger:*
+![Problem Statement](BE.png)
+
 
 ## To run
 
-### Docker
+### *Docker*
 
 Install docker enginer or Docker Desktop
 
-'''docker-compose up --build'''
+`docker-compose up --build`
 
-OR
+*OR*
 
 
-'''docker-compose up'''
+`docker-compose up`
 
-### Locally
+### *Locally*
 
-Install python 3.10
+1. Install *python 3.10*
 
-Install pipenv
+2. Install *pipenv*
 
-Install nodejs 19.x
+3. Install *nodejs 19.x*
 
-Install npm and yarn
+4. Install *npm* and *yarn*
 
 #### Terminal 1:
 
-'''yarn install'''
+`cd app`
 
-'''yarn start'''
+`yarn install`
+
+`yarn start`
 
 #### Terminal 2:
 
-'''pipenv install'''
+`pipenv install`
 
-'''pipenv run start-api'''
+`pipenv run start-api`
 
-'''pipenv run unit-tests'''
