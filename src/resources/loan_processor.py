@@ -119,11 +119,13 @@ class FetchBalSheets(Resource):
         for item in bal_sheet:
             PL += int(item.get("profitOrLoss"))
             AV += int(item.get("assetsValue"))
-        response =  jsonify({
-            "bal_sheet": bal_sheet,
-            "Total Profit/Loss": PL,
-            "Average assetsValue": round(AV / 12, 2),
-        })
+        response = jsonify(
+            {
+                "bal_sheet": bal_sheet,
+                "Total Profit/Loss": PL,
+                "Average assetsValue": round(AV / 12, 2),
+            }
+        )
         # response.headers.add("Access-Control-Allow-Origin", "*")
         return response
 
@@ -132,28 +134,26 @@ class FetchBalSheets(Resource):
 class SubmitApplication(Resource):
     @api.expect(application_info)
     def post(self):
-        content_type = request.headers.get('Content-Type')
-        if (content_type == 'application/json'):
+        content_type = request.headers.get("Content-Type")
+        if content_type == "application/json":
             req = request.get_json()
             preAssessment = 20
             loan_amount = int(req["LoanAmount"])
             AAV = int(
-                ast.literal_eval(req["SummaryOfProfitorLoss"])[
-                    "Average assetsValue"
-                ]
+                ast.literal_eval(req["SummaryOfProfitorLoss"])["Average assetsValue"]
             )
             PL = int(
-                ast.literal_eval(req["SummaryOfProfitorLoss"])[
-                    "Total Profit/Loss"
-                ]
+                ast.literal_eval(req["SummaryOfProfitorLoss"])["Total Profit/Loss"]
             )
             if PL > 0:
                 preAssessment = 60
                 if AAV > loan_amount:
                     preAssessment = 100
             req.update({"preAssessmentValue": str(preAssessment)})
-            decision_maker_result = requests.post(url="http://127.0.0.1:5000/decisionMaker/", json=req)
-            decision = jsonify(message=decision_maker_result.text.replace('"',''))
+            decision_maker_result = requests.post(
+                url="http://127.0.0.1:5000/decisionMaker/", json=req
+            )
+            decision = jsonify(message=decision_maker_result.text.replace('"', ""))
             # decision.headers.add('Access-Control-Allow-Origin','*')
             # decision.headers.add('Access-Control-Allow-Headers','Content-Type,Authorization')
             # decision.headers.add('Access-Control-Allow-Methods','GET,PUT,POST,DELETE')
@@ -162,5 +162,4 @@ class SubmitApplication(Resource):
             # "X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers"
             return decision
         else:
-            return 'Content-Type not supported!'
-        
+            return "Content-Type not supported!"

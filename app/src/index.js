@@ -1,17 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import './index.css';
-import App from './App';
-import LoanApplication from './LoanApplication';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./index.css";
+import App from "./App";
+import LoanApplication from "./LoanApplication";
+import reportWebVitals from "./reportWebVitals";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <Routes>
-        <Route path="/" element={<App/>} />
-        <Route path="/LoanApplication" element={<LoanApplication/>} />
+      <Route path="/" element={<App />} />
+      <Route path="/LoanApplication" element={<LoanApplication />} />
     </Routes>
   </BrowserRouter>
 );

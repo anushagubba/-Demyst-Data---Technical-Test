@@ -1,81 +1,100 @@
-import React from 'react'
+import React from "react";
 import { useState, useEffect } from "react";
 
-import './LoanApplication.css'
+import "./LoanApplication.css";
 
-function LoanApplication(props){
-  const [businessEntity, setuserName] = useState("")
-  const [estdYr, setestdYr] = useState("")
-  const [loanAmount, setloanAmount] = useState("")
+function LoanApplication(props) {
+  const [businessEntity, setuserName] = useState("");
+  const [estdYr, setestdYr] = useState("");
+  const [loanAmount, setloanAmount] = useState("");
   const options = [
-    {value: '', text: '--Select Accounting Provider--'},
-    {value: 'MYOB', text: 'MYOB'},
-    {value: 'Xero', text: 'Xero'},
-    {value: 'Custom', text: 'Custom'},
+    { value: "", text: "--Select Accounting Provider--" },
+    { value: "MYOB", text: "MYOB" },
+    { value: "Xero", text: "Xero" },
+    { value: "Custom", text: "Custom" },
   ];
   const [accountingService, setAC] = useState(options[0].value);
   const [data, setData] = useState("");
-  const [balanceSheetInfo,setbalanceSheetInfo] = useState("Click Request Balance Sheet to view Balance Sheet")
-  const [PL,setPL] = useState("Profit/Loss")
-  const [AAV,setAAV] = useState("Average Asset Value")
-  const [decision,setDecision] = useState("Click Submit to view the Application status")
-  const handleChange = event => {
+  const [balanceSheetInfo, setbalanceSheetInfo] = useState(
+    "Click Request Balance Sheet to view Balance Sheet"
+  );
+  const [PL, setPL] = useState("Profit/Loss");
+  const [AAV, setAAV] = useState("Average Asset Value");
+  const [decision, setDecision] = useState(
+    "Click Submit to view the Application status"
+  );
+  const handleChange = (event) => {
     setAC(event.target.value);
   };
 
-
-useEffect(() => {
+  useEffect(() => {
     fetch("http://localhost:5000/loanInititate/")
-    .then(res => res.json())
-    .then(data => {setData(data.message);});}, []);
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data.message);
+      });
+  }, []);
 
   const OnBalSheetRequest = (e) => {
     if (businessEntity && estdYr && loanAmount && accountingService) {
-      
-      fetch('http://localhost:5000/fetchBalSheets/' + accountingService + '/' + estdYr+ '/')
-      .then(res => res.json())
-      .then(data => {
-        setPL(data["Total Profit/Loss"])
-        setAAV(data["Average assetsValue"])
-        setbalanceSheetInfo(JSON.stringify(data));
-      })
-      ;
-      
+      fetch(
+        "http://localhost:5000/fetchBalSheets/" +
+          accountingService +
+          "/" +
+          estdYr +
+          "/"
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          setPL(data["Total Profit/Loss"]);
+
+          setAAV(data["Average assetsValue"]);
+          setbalanceSheetInfo(JSON.stringify(data));
+        });
     }
     e.preventDefault();
- }
-
- const OnSubmit = (e) => {
-  if (businessEntity && estdYr && loanAmount && accountingService && PL && AAV) {
-    const payload ={
-      Name: businessEntity,
-      LoanAmount: loanAmount,
-      YearEstablished: estdYr,
-      SummaryOfProfitorLoss: balanceSheetInfo
-    }
-    console.log(payload)
-    const requestOptions = {
-      method: 'POST',
-      headers : {
-        'Content-Type':'application/json'
-  },
-      body: JSON.stringify(payload)
   };
-    fetch('http://localhost:5000/submit/', requestOptions)
-    .then(res => res.json())
-    .then(data => {
-      setDecision(data.message);
-    });
-  }
-  e.preventDefault();
-}
+
+  const OnSubmit = (e) => {
+    if (
+      businessEntity &&
+      estdYr &&
+      loanAmount &&
+      accountingService &&
+      PL &&
+      AAV
+    ) {
+      const payload = {
+        Name: businessEntity,
+        LoanAmount: loanAmount,
+        YearEstablished: estdYr,
+        SummaryOfProfitorLoss: balanceSheetInfo,
+      };
+      console.log(payload);
+      const requestOptions = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      };
+      fetch("http://localhost:5000/submit/", requestOptions)
+        .then((res) => res.json())
+        .then((data) => {
+          setDecision(data.message);
+        });
+    }
+    e.preventDefault();
+  };
 
   return (
     <div className="loan-application-container">
       <h1 id="pageHeader" className="loan-application-text">
         Simple Business Loan Application System
       </h1>
-      <h2 id="status" className="loan-application-status">{data}</h2>
+      <h2 id="status" className="loan-application-status">
+        {data}
+      </h2>
       <form className="loan-application-form">
         <input
           type="text"
@@ -100,19 +119,20 @@ useEffect(() => {
           placeholder="Loan Amount"
           className="loan-application-textinput input"
           onChange={(e) => setloanAmount(e.target.value)}
-          />
-        
-        
+        />
+
         <select
           id="accountingService"
           required
           className="loan-application-textinput"
-          value={accountingService} onChange={handleChange}
-        >{options.map(option => (
-          <option key={option.value} value={option.value}>
-            {option.text}
-          </option>
-        ))}
+          value={accountingService}
+          onChange={handleChange}
+        >
+          {options.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.text}
+            </option>
+          ))}
         </select>
 
         <button
@@ -137,7 +157,7 @@ useEffect(() => {
         <input
           type="text"
           id="totalProfitLoss"
-          value = {PL}
+          value={PL}
           disabled
           className="loan-application-textinput input"
         />
@@ -145,13 +165,14 @@ useEffect(() => {
         <input
           type="text"
           id="avgAV"
-          value = {AAV}
+          value={AAV}
           disabled
           className="loan-application-textinput input"
         />
-        <button id="submit" 
-        className="loan-application-button button"
-        onClick={OnSubmit}
+        <button
+          id="submit"
+          className="loan-application-button button"
+          onClick={OnSubmit}
         >
           Submit Application
         </button>
@@ -163,7 +184,7 @@ useEffect(() => {
         ></textarea>
       </form>
     </div>
-  )
+  );
 }
 
 export default LoanApplication;
