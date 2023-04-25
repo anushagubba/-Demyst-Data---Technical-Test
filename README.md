@@ -33,6 +33,8 @@ OR
 
 Install python 3.10
 
+Install pipenv
+
 Install nodejs 19.x
 
 Install npm and yarn
