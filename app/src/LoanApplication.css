@@ -1,0 +1,96 @@
+.loan-application-container {
+  width: 100%;
+  display: flex;
+  overflow: auto;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+}
+.loan-application-text {
+  align-self: center;
+  margin-top: var(--dl-space-space-threeunits);
+  font-family: Fira Sans;
+  font-size: 50px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: var(--dl-space-space-threeunits);
+  padding-bottom: 10px;
+  text-transform: capitalize;
+}
+.loan-application-status {
+  align-self: center;
+  margin-top: var(--dl-space-space-threeunits);
+  font-family: Fira Sans;
+  font-size: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: var(--dl-space-space-threeunits);
+  padding-bottom: 10px;
+  text-transform: capitalize;
+}
+.loan-application-form {
+  width: 790px;
+  height: 1310px;
+  display: flex;
+  align-items: center;
+  border-color: var(--dl-color-gray-black);
+  border-style: hidden;
+  border-width: 1px;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.loan-application-textinput {
+  align-self: center;
+  margin-top: 10px;
+  padding-top: 10px;
+  width: 300px;
+  padding-bottom: 10px;
+}
+
+.loan-application-button {
+  width: 300px;
+  height: 53px;
+  margin-top: 10px;
+  font-size: 25px;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-transform: capitalize;
+  background-color: #80f77a;
+}
+.loan-application-text1 {
+  font-size: 20px;
+  font-family: Fira Sans;
+  margin-top: 15px;
+  font-family: Fira Sans;
+  font-weight: 400;
+}
+
+.loan-application-text2 {
+  font-size: 20px;
+  align-self: center;
+  margin-top: 15px;
+  font-family: Fira Sans;
+  margin-left: 0px;
+}
+
+.loan-application-textarea1 {
+  width: 850px;
+  font-family: Fira Sans;
+  padding: 10px;
+  font-size: 20px;
+  height: 300px;
+  text-align: center;
+  margin-top: 15px;
+}
+.loan-application-textarea2 {
+  width: 600px;
+  color: blueviolet;
+  font-family: Fira Sans;
+  text-align: center;
+  font-size: 20px;
+  padding: 10px;
+  height: 100px;
+  margin-top: 15px;
+}

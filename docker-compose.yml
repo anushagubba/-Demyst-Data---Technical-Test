@@ -1,0 +1,15 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: src/DockerfileAPI
+    image: loan-api
+    ports:
+      - "5000:5000"
+  app:
+    build:
+      context: .
+      dockerfile: app/DockerfileAPP
+    image: loan-app
+    ports:
+      - "3000:3000"

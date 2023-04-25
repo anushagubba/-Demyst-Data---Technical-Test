@@ -1,0 +1,37 @@
+.home-container {
+  width: 100%;
+  display: flex;
+  overflow: auto;
+  min-height: 100vh;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 60px;
+}
+.home-text {
+  align-self: center;
+  margin-top: var(--dl-space-space-threeunits);
+  font-family: Fira Sans;
+  font-size: 50px;
+  padding-top: var(--dl-space-space-unit);
+  margin-bottom: var(--dl-space-space-threeunits);
+  padding-bottom: var(--dl-space-space-unit);
+  text-transform: capitalize;
+}
+.home-navlink {
+  align-self: center;
+  color: black;
+  font-family: Fira Sans;
+  font-size: 30px;
+  margin-top: 25px;
+  text-decoration: none;
+}
+
+.home-apply{
+  align-self: center;
+  background-color: darkgray;
+  margin: 31px;
+  padding: 10px;
+  font-family: Fira Sans;
+  font-size: 20px;
+}

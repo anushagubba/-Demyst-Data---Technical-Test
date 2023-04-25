@@ -1,0 +1,12 @@
+FROM node:19.5.0-alpine
+EXPOSE 3000
+WORKDIR /app
+
+# ENV PATH /app/node_modules/.bin:$PATH
+COPY app/package.json app/yarn.lock ./
+COPY ./app/src ./src
+COPY ./app/public ./public
+RUN yarn install
+
+RUN yarn build
+CMD ["yarn", "start"]

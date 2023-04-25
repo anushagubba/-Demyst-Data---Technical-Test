@@ -1,0 +1,22 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+flask = "*"
+flask-restx = "*"
+requests = "*"
+pytest = "*"
+pytest-flask = "*"
+
+[dev-packages]
+black = "*"
+
+[requires]
+python_version = "3.10"
+
+[scripts]
+start-api = "python src/main.py"
+fmt = "python -m black src/"
+unit-tests = "python -m pytest"
