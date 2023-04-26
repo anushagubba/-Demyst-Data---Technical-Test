@@ -69,5 +69,6 @@ Install docker enginer or Docker Desktop
 
 `pipenv install`
 
-`pipenv run start-api`
+`pipenv run unit-tests`
 
+`pipenv run start-api`
