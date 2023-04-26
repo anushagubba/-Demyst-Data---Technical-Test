@@ -7,8 +7,7 @@ name = "pypi"
 flask = "*"
 flask-restx = "*"
 requests = "*"
-pytest = "*"
-pytest-flask = "*"
+flask-cors = "*"
 
 [dev-packages]
 black = "*"
