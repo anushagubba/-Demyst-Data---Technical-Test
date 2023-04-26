@@ -8,6 +8,7 @@ from server.instance import server
 
 app = server.app
 
+
 @pytest.fixture
 def client():
     with app.test_client() as client:
@@ -116,7 +117,7 @@ def test_loan_inititate(client):
     response = client.get("/loanInititate/")
     print(response)
     assert response.status_code == 200
-    assert response.json == {'message': 'Loan Application Process Initiated'}
+    assert response.json == {"message": "Loan Application Process Initiated"}
 
 
 def test_fetch_bal_sheets_redirection(client):
